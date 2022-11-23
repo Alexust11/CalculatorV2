@@ -23,7 +23,7 @@ public class FirstController {
      @GetMapping("/plus")
 
     public String plus(@RequestParam Integer num1, @RequestParam Integer num2) {
-                 return num1 + "+ " + num2 + " = " +calcService.plus(num1,num2) ;
+        return num1 + "+ " + num2 + " = " + calcService.plus(num1, num2);
     }
     @GetMapping("/minus")
 
@@ -38,7 +38,9 @@ public class FirstController {
 
     @GetMapping("/divide")
 
-    public String divide(@RequestParam Integer num1, @RequestParam Integer num2) {
-        return num1 + "/ " + num2 + " = " +calcService.divide(num1,num2) ;
+    public String divide (@RequestParam Integer num1, @RequestParam Integer num2) {
+        if (num2 == 0) {
+            throw new IllegalArgumentException("деление на ноль");
+        } else return num1 + "/ " + num2 + " = " +calcService.divide(num1,num2) ;
     }
 }
